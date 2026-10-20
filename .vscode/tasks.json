@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build Walking Robot (MinGW g++)",
+            "command": "g++",
+            "args": [
+                "-O2",
+                "-Wall",
+                "-DFREEGLUT_STATIC",
+                "main.cpp",
+                "glut_compat.cpp",
+                "-o",
+                "robot.exe",
+                "-I${workspaceFolder}/include",
+                "-lopengl32",
+                "-lglu32",
+                "-lgdi32",
+                "-static-libgcc",
+                "-static-libstdc++"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Compiles main.cpp with native Windows OpenGL (zero external DLL dependencies required)"
+        },
+        {
+            "type": "shell",
+            "label": "Run Walking Robot",
+            "command": ".\\robot.exe",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "none",
+            "detail": "Launches the compiled robot.exe"
+        }
+    ]
+}
